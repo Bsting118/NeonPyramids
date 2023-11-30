@@ -1,0 +1,134 @@
+* 
+{
+    /* "* {}" = apply to every element the following: */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body 
+{
+    /*Code for a centered div object AND setting overall background to black:*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: black;
+}
+
+.mainHeader
+{
+    position: absolute;
+    top: 5%;
+    color: white;
+    font-family: "Sacramento", "Segoe Script", sans-serif, Times;
+
+    /*Neon Text effect:*/
+    text-shadow:
+    /*White glow:*/
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    /*White-Yellow glow:*/
+    0 0 42px rgb(244, 255, 91),
+    0 0 82px rgb(244, 255, 91),
+    0 0 92px rgb(244, 255, 91),
+    0 0 102px rgb(244, 255, 91),
+    0 0 151px rgb(244, 255, 91);
+
+    /*For flicker: (see pulsate's keyframes below)*/
+    animation: pulsate .25s ease-in-out infinite alternate;
+}
+
+@keyframes pulsate 
+{
+    0%  /*START OF ANIMATION CYCLE*/
+    {
+        text-shadow:
+        /*Smaller blur radius (shrink "flicker")*/
+        0 0 2px #fff,
+        0 0 4px #fff,
+        0 0 6px #fff,
+        0 0 10px rgb(244, 255, 91),
+        0 0 55px rgb(244, 255, 91),
+        0 0 80px rgb(244, 255, 91),
+        0 0 70px rgb(244, 255, 91),
+        0 0 80px rgb(244, 255, 91);
+    }
+    100% /*END OF ANIMATION CYCLE*/
+    {
+        text-shadow:
+        /*Larger blur radius (expand "flicker")*/
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px rgb(244, 255, 91),
+        0 0 80px rgb(244, 255, 91),
+        0 0 90px rgb(244, 255, 91),
+        0 0 100px rgb(244, 255, 91),
+        0 0 150px rgb(244, 255, 91);
+    }
+}
+
+/*Border outline of pyramid HTML/CSS object:*/
+.pyramid
+{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+    animation: animate 4s linear infinite;
+}
+
+@keyframes animate
+{
+    0%
+    {
+        transform: rotateX(-30deg) rotateY(0deg);
+    }
+    100%
+    {
+        transform: rotateX(-30deg) rotateY(360deg);
+    }
+}
+
+/*Div fill box inside pyramid's BORDER OUTLINE and detailing its postioning and fill: (the <div> containing the spans)*/
+.pyramid div
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.pyramid div span
+{
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(black, lime);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    transform: rotateY(calc(90deg * var(--triangle))) translateZ(74px) rotateX(30deg);
+
+}
+
+.base 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: lime;
+    transform: rotateX(90deg) translateZ(-250px);
+    filter: blur(25px);
+    /*box-shadow: offset-x | offset-y | blur-radius| color (any number of shadows, separated by commas)*/
+    box-shadow: 0 0 300px rgba(0,255,0,0.4), 0 0 300px rgba(0,255,0,0.4), 0 0 300px rgba(0,255,0,0.4), 0 0 300px rgba(0,255,0,0.4)
+}

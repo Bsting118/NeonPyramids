@@ -1,0 +1,33 @@
+<!--TO RUN: 
+    1. Start a Live Server, either using terminal with Node or using a VS Code extension.
+        -Tip: I used Ritwick Dey's Live Server extension, enabled globally in my VS Code.
+    2. Navigate to the opened browser and you should see the neon pyramid!
+    3. Right-click on the site and click "Inspect" to view the DOM properties of how it works.
+        -Tip: you can change CSS properties, like the color of the pyramid, via editing the inspected DOM!
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bsting's Neon Pyramids</title>
+        <link rel="stylesheet" href = "style.css">
+    </head>
+
+    <body>
+
+        <h1 class = "mainHeader">Bsting's Neon Pyramid(s)</h1>
+
+        <div class = "pyramid">
+            <div class = "base"></div>
+            <div>
+                <!--Refactored separate spans that had individual position transforms for 0, 90, 180, 270-->
+                <!--Now is 90 * CSS var's value (0 = 0, 1 = 90, 2 = 180, 3 = 270)-->
+                <span style = "--triangle:0;"></span>
+                <span style = "--triangle:1;"></span>
+                <span style = "--triangle:2;"></span>
+                <span style = "--triangle:3;"></span>
+            </div>
+        </div>
+    </body>
+</html>
